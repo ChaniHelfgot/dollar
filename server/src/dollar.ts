@@ -46,19 +46,19 @@
 // import { initDb } from "./db";
 // import { fetchRates } from "./fetchRates";
 
-import { initDb } from "./initDb";
-import { updatePreviousMonth } from "./updateRates";
+// import { initDb } from "./initDb";
+// import { updatePreviousMonth } from "./updateRates";
 
-async function main() {
-  await initDb();
-  await updatePreviousMonth();
-  process.exit(0);
-}
+// async function main() {
+//   await initDb();
+//   await updatePreviousMonth();
+//   process.exit(0);
+// }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+// main().catch((err) => {
+//   console.error(err);
+//   process.exit(1);
+// });
 
 
 
@@ -77,3 +77,19 @@ main().catch((err) => {
 //         console.error(err);
 //         process.exit(1);
 //     });
+
+
+import { initDb } from "./initDb";
+import { startScheduler } from "./scheduler";
+import { updatePreviousMonth } from "./updateRates";
+
+async function start() {
+  await initDb();
+  await updatePreviousMonth();
+
+  startScheduler();
+
+  console.log("🚀 Server is running");
+}
+
+start().catch(console.error);

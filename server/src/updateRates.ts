@@ -37,16 +37,25 @@ export async function updatePreviousMonth() {
     );
   }
 
-  const result = await pool.query(`
-    SELECT
-      TO_CHAR(date, 'YYYY-MM') AS month,
-      AVG(rate) AS avg_rate
-    FROM rates
-    GROUP BY month
-    ORDER BY month
-  `);
+  await pool.query(`
+  INSERT INTO monthly_rates (month, avg_rate)
+  SELECT
+    date_trunc('month', date)::date AS month,
+    ROUND(AVG(rate), 4)            AS avg_rate
+  FROM rates
+  WHERE date >= '2023-01-01'
+  GROUP BY month
+  ORDER BY month;
+`);
 
-  console.table(result.rows);
+const { rows } = await pool.query(`
+  SELECT
+    TO_CHAR(month, 'YYYY-MM') AS month,
+    avg_rate
+  FROM monthly_rates
+  ORDER BY month
+`);
+console.table(rows);
 
   console.log(`Inserted rates for ${from} → ${to}`);
 }
