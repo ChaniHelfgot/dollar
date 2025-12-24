@@ -1,0 +1,1 @@
+16 08 12 * * root node /app/dist/runUpdate.js >> /var/log/cron.log 2>&1
