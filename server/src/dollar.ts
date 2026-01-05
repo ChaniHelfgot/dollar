@@ -78,15 +78,16 @@
 //         process.exit(1);
 //     });
 
-
-import { initDb } from "./initDb";
-import { startScheduler } from "./scheduler";
+import "./index"
+import { initDb } from "./db/initDb";
+import { startScheduler } from "./cron/scheduler";
 import { updatePreviousMonth } from "./updateRates";
+import { seedFrom2023 } from "./db/seed"
 
 async function start() {
   await initDb();
-  await updatePreviousMonth();
-
+  await seedFrom2023();
+  await updatePreviousMonth()
   startScheduler();
 
   console.log("🚀 Server is running");

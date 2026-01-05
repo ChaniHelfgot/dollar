@@ -4,7 +4,7 @@ import path from "path";
 
 export async function initDb() {
   const schema = fs.readFileSync(
-    path.join(__dirname, "../schema.sql"),
+    path.join(process.cwd(), "schema.sql"),
     "utf8"
   );
 

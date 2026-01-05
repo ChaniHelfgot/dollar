@@ -1,32 +1,13 @@
-import { useEffect, useState } from "react";
-
-type Rate = {
-  month: string;
-  average: number;
-};
-
+import React from "react";
+import Dashboard from "./pages/Dashboard";
 function App() {
-  const [data, setData] = useState<Rate[]>([]);
-
- useEffect(() => {
-  fetch("http://localhost:3000/rates")
-    .then(r => r.json())
-    .then(setData)
-    .catch(console.error);
-}, []);
-
-  return (
-    <div>
-      <h1>Rates</h1>
-      <ul>
-        {data.map(d => (
-          <li key={d.month}>
-            {d.month} - {d.average}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+    return (
+        <div style={{ padding: "10px", fontSize: "24px"}}>
+            <h2>Average monthly exchange rate $</h2>
+            {/* 💰💸💲 */}
+            <Dashboard />
+        </div>
+    );
 }
 
 export default App;

@@ -1,5 +1,6 @@
 import cron from "node-cron";
-import { updatePreviousMonth } from "./updateRates";
+import { updatePreviousMonth } from "../updateRates";
+
 
 export function startScheduler() {
     cron.schedule("0 0 1 * *", async () => {
