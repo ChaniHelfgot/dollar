@@ -1,8 +1,7 @@
 import { pool } from "./db/db";
+
 function getPreviousMonthRange() {
   const now = new Date();
-  console.log("date:", now.toISOString());
-
   const start = new Date(now.getFullYear(), now.getMonth() - 1, 1);
   const end = new Date(now.getFullYear(), now.getMonth(), 0);
   const fmt = (d: Date) => d.toISOString().split("T")[0];
@@ -52,5 +51,4 @@ export async function updatePreviousMonth() {
 
   console.table(rows);
 
-  console.log(`Inserted rates for ${from} → ${to}`);
 }

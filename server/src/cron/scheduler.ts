@@ -7,7 +7,6 @@ export function startScheduler() {
         console.log("⏰ Monthly cron started");
         try {
             await updatePreviousMonth();
-            console.log("✅ Monthly cron finished");
         } catch (err) {
             console.error("❌ Monthly cron failed", err);
         }

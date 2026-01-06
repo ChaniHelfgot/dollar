@@ -1,7 +1,6 @@
 import "./config/env";
-
-import express from "express";
 import cors from "cors";
+import express from "express";
 import ratesRoutes from "./router/rate.routes";
 
 const app = express();

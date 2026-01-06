@@ -6,7 +6,6 @@ export async function fetchMonthlyRates(req: Request, res: Response) {
     const data = await getMonthlyRates();
     res.json(data);
   } catch (err) {
-    console.error(err);
     res.status(500).json({ error: "DB error" });
   }
 }

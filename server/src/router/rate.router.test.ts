@@ -2,7 +2,6 @@ import request from "supertest";
 import express from "express";
 import ratesRoutes from "./rate.routes";
 
-// ⬅️ זה החלק הקריטי
 jest.mock("../services/rate.services", () => ({
   getMonthlyRates: jest.fn().mockResolvedValue([
     { month: "2023-01", avg_rate: 3.45 },

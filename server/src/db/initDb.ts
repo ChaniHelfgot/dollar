@@ -9,5 +9,4 @@ export async function initDb() {
   );
 
   await pool.query(schema);
-  console.log("DB initialized");
 }

@@ -4,6 +4,12 @@
     "jsx": "react-jsx",
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "strict": true
-  }
+    "strict": true,
+    "types": [
+      "vite/client"
+    ]
+  },
+  "include": [
+    "src"
+  ]
 }

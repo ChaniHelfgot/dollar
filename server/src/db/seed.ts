@@ -28,7 +28,6 @@ export async function seedFrom2023() {
         [date, v.ILS]
       );
     }
-
     m++;
     if (m === 12) { m = 0; y++; }
   }
